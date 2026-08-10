@@ -17,7 +17,6 @@ namespace ShelterApi.Models
         public string AreaCode { get; set; } = string.Empty;
         [Range(1, 5)]
         public int RiskLevel { get; set; }
-        public int AreaId { get; set; }
         public ICollection<Shelter> Shelters { get; }
     }
 }

@@ -1,6 +1,8 @@
 using ShelterApi.Models;
 using Microsoft.EntityFrameworkCore;
 using ShelterApi.Data;
+using ShelterApi.DTOs;
+using ShelterApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,9 @@ builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ShelterDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddScoped<IShelterRepositories, ShelterRepositories>();
+builder.Services.AddScoped<IInspectionRepositories, InspectionRepositories>();
+builder.Services.AddScoped<IAreaRepositories, AreaRepositories>();
 
 var app = builder.Build();
 

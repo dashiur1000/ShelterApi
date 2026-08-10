@@ -1,11 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ShelterApi.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace ShelterApi.Models
+namespace ShelterApi.DTOs
 {
-    public class Shelter
+    public class ShelterDetailDto
     {
-        public int Id { get; set; }
         public int AreaId { get; set; }
         [Required]
         [StringLength(200)]
@@ -26,7 +25,5 @@ namespace ShelterApi.Models
         [StringLength(50)]
         [RegularExpression(@"^(PublicBuilding|School|Parking|Residential|Commercial)$")]
         public string? ShelterType { get; set; }
-        public Area Area { get; set; }
-        public ICollection<Inspection> Inspections { get; set; }
     }
 }
